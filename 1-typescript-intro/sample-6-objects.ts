@@ -4,23 +4,27 @@ interface Context {
 interface LoggerInterface{
     message:string;
     context: Context;
+    str:string;
 }
+
 class Logger  implements LoggerInterface{
     message:string
     context: Context;
-    constructor (currentContext: Context) {
+    str:string;
+    constructor (currentContext: Context, str:string) {
+        this.str = str
         this.context = currentContext;
     }
     log(message) {
         console.log( `${this.context.name}: ${message}`);
     }
 }
-
+let str : string= "Logger for ... initialized";
 let currentModule:Context = { name: "sample-4-objects"}
-let logger: Logger = new Logger(currentModule);
-logger.log("Logger for ... initialized");
-logger.log("Start logging...");
+let logger: Logger = new Logger(currentModule, str);
 
+logger.log("Start logging...");
+logger.log(str);
 /* TODO: Dodaj wyświetlanie komunikaty "Logger for ... initialized" w konstruktorze obiektu Logger */
 
 interface ComplexInterface {
@@ -53,7 +57,6 @@ class Generators{
     public x4:number;
     public c:string;
     public pesel:string;
-   
    public generatePESEL(){
     this.year  = (Math.floor(Math.random() * (1900 - 2021 + 1)) + 2021).toString().slice(1, 3)  
     this.month = Math.floor(Math.random() * 12) + 1;
