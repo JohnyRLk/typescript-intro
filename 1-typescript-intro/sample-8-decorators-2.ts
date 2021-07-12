@@ -1,27 +1,30 @@
-export function logAction(target: Object, propertyKey: string, descriptor: TypedPropertyDescriptor<any>): TypedPropertyDescriptor<any> {
-    const originalMethod = descriptor.value; // save a reference to the original method
+export function logAction(
+  target: Object,
+  propertyKey: string,
+  descriptor: TypedPropertyDescriptor<any>
+): TypedPropertyDescriptor<any> {
+  const originalMethod = descriptor.value;
 
+  descriptor.value = async function (...args: any[]) {
+    let functionName = propertyKey;
 
-    descriptor.value = async function(...args: any[]) {    
-        let functionName = propertyKey;
-        // pre
-        await console.log(`+++ [Page] ${target.constructor.name} [action] ${functionName} [args] ${args}`)
+    await console.log(
+      `+++ [Page] ${target.constructor.name} [action] ${functionName} [args] ${args}`
+    );
 
-        // run original annotated method and store result
-        const result = await originalMethod.apply(this, args);
+    const result = await originalMethod.apply(this, args);
 
-        return result;
-    };
+    return result;
+  };
 
-return descriptor;
+  return descriptor;
 }
 
 class AnotherImportantClass {
-
-    @logAction
-    sampleFunction(text: string) {
-        console.log("Log from sampleFunction: " + text)
-    }
+  @logAction
+  sampleFunction(text: string) {
+    console.log("Log from sampleFunction: " + text);
+  }
 }
 
-new AnotherImportantClass().sampleFunction("hello")
+new AnotherImportantClass().sampleFunction("hello");
