@@ -1,5 +1,4 @@
 function fakeRequest2(callback) {
-  // Simulate a code delay
   const delay = 500;
   setTimeout(function () {
     console.log("Setting data");
