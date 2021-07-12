@@ -1,11 +1,9 @@
-const add = function (...args):number{
-    let suma = 0;
-    for(let i=0;i<args.length;i++){
-        suma+=args[i];
-    }
-    return suma;
+const add = function (...args :number[]):number{
+    return args.reduce(function(a,b){
+        return a + b;
+    })
 }
-console.log(add(1,2,3,23))
+console.log(add(1,2,324,5,1))
 console.log(add(Math.random(), Math.random()))
 export { add }
 
