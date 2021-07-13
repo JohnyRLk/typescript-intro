@@ -1,4 +1,4 @@
-import { AsyncResource } from "async_hooks";
+
 
 let arr = [1, 2, 3, 4, 5];
 arr.push(6);
@@ -24,4 +24,4 @@ let reducedArr = arr.reduce(function (acc, el) {
 }, 0);
 console.log(reducedArr);
 
-// Zadanie: Wykorzystaj funkcje powyżej do ulepszenia funckji generującej numer PESEL
+

@@ -25,7 +25,6 @@ let logger: Logger = new Logger(currentModule, str);
 
 logger.log("Start logging...");
 logger.log(str);
-/* TODO: Dodaj wyświetlanie komunikaty "Logger for ... initialized" w konstruktorze obiektu Logger */
 
 interface ComplexInterface {
   level: number;
@@ -44,10 +43,6 @@ class ComplexClass implements ComplexInterface {
     throw new Error("Method not implemented.");
   }
 }
-
-/* TODO: Zdefiniuj interface dla klasy Logger, więcej informacji możesz znaleźć na stronie https://www.typescriptlang.org/docs/handbook/interfaces.html */
-
-// Zadanie: Stwórz klasę generators udostępniającą metodę generującą pesel
 class Generators {
   public day: number;
   public year: string;
@@ -83,4 +78,3 @@ class Generators {
   }
 }
 let peselGenerate = new Generators();
-console.log(peselGenerate.generatePESEL());
